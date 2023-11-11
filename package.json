@@ -4,7 +4,7 @@
   "description": "The backend used to host DiscordBot and Server.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --build",
     "start": "node dist/index.js"
   },
   "author": "cutymeo / shiinazzz",

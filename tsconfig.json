@@ -105,7 +105,10 @@
   ],
   "references": [
     {
-      "path": "./packages/DiscordBot"
+      "path": "./packages/DiscordBot",
+    },
+    {
+      "path": "./packages/Core",
     }
   ]
 }
