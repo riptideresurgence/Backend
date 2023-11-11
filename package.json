@@ -1,0 +1,17 @@
+{
+  "name": "riptide-backend",
+  "version": "0.0.1",
+  "description": "The backend used to host DiscordBot and Server.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "cutymeo / shiinazzz",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}

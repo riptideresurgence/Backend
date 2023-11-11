@@ -1,0 +1,6 @@
+[submodule "packages/DiscordBot"]
+	path = packages/DiscordBot
+	url = https://github.com/riptideresurgence/DiscordBot.git
+[submodule "packages/Core"]
+	path = packages/Core
+	url = https://github.com/riptideresurgence/Core.git
