@@ -23,4 +23,5 @@ if (!discordBotToken) {
 }
 
 // Initialize things
+core.database.connect(mongodbUri, undefined);
 discordBot.createClient(discordBotPrefix, discordBotToken);
