@@ -13,10 +13,14 @@ if (fs.existsSync(path.join(__dirname, '../config/.env'))) {
 // Get environment variables
 const mongodbUri = process.env["MONGODB_URI"];
 const discordBotToken = process.env["DISCORD_BOT_TOKEN"];
+const discordBotClientId = process.env["DISCORD_BOT_CLIENT_ID"];
 const discordBotPrefix = process.env["DISCORD_BOT_PREFIX"] || ";";
 
 if (!mongodbUri) {
     throw new Error("Backend: No MONGODB_URI found in environment.");
+}
+if (!discordBotClientId) {
+    throw new Error("Backend: No DISCORD_BOT_CLIENT_ID found in environment.");
 }
 if (!discordBotToken) {
     throw new Error("Backend: No DISCORD_BOT_TOKEN found in environment.");
@@ -24,4 +28,4 @@ if (!discordBotToken) {
 
 // Initialize things
 core.database.connect(mongodbUri, undefined);
-discordBot.createClient(discordBotPrefix, discordBotToken);
+discordBot.createClient(discordBotPrefix, discordBotClientId, discordBotToken);
