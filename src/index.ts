@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import dotenv from "dotenv";
+import {createServer} from "http";
 
 import * as core from "@riptide/core"; // we import the core for the sole purpose of connecting to database
 import * as discordBot from "@riptide/discordbot";
@@ -25,6 +26,12 @@ if (!discordBotClientId) {
 if (!discordBotToken) {
     throw new Error("Backend: No DISCORD_BOT_TOKEN found in environment.");
 }
+
+// Keep alive
+createServer((req, res) => {
+    res.write("hi nothing is in here");
+    res.end();
+}).listen(8080);
 
 // Initialize things
 core.database.connect(mongodbUri, undefined);
