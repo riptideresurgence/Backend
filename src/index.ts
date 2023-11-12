@@ -29,6 +29,7 @@ if (!discordBotToken) {
 
 // Keep alive
 createServer((req, res) => {
+    res.statusCode = 200;
     res.write("hi nothing is in here");
     res.end();
 }).listen(8080);
