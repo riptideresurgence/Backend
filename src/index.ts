@@ -16,6 +16,7 @@ const mongodbUri = process.env["MONGODB_URI"];
 const discordBotToken = process.env["DISCORD_BOT_TOKEN"];
 const discordBotClientId = process.env["DISCORD_BOT_CLIENT_ID"];
 const discordBotPrefix = process.env["DISCORD_BOT_PREFIX"] || ";";
+const serverPort = parseInt(process.env["PORT"] || "") || 8080;
 
 if (!mongodbUri) {
     throw new Error("Backend: No MONGODB_URI found in environment.");
@@ -30,4 +31,4 @@ if (!discordBotToken) {
 // Initialize things
 core.database.connect(mongodbUri, undefined);
 discordBot.createClient(discordBotPrefix, discordBotClientId, discordBotToken);
-server.createInstance();
+server.createInstance(serverPort);
