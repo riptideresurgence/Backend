@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import dotenv from "dotenv";
 
-import * as core from "@riptide/core"; // we import the core for the sole purpose of connecting to database
+import * as core from "@riptide/core"; // we import the core for the sole purpose of connecting to database and open cloud
 import * as discordBot from "@riptide/discordbot";
 import * as server from "@riptide/server";
 
@@ -16,6 +16,7 @@ const mongodbUri = process.env["MONGODB_URI"];
 const discordBotToken = process.env["DISCORD_BOT_TOKEN"];
 const discordBotClientId = process.env["DISCORD_BOT_CLIENT_ID"];
 const discordBotPrefix = process.env["DISCORD_BOT_PREFIX"] || ";";
+const robloxOpenCloudApiKey = process.env["ROBLOX_OPEN_CLOUD_KEY"];
 const serverPort = parseInt(process.env["PORT"] || "") || 8080;
 
 if (!mongodbUri) {
@@ -27,8 +28,12 @@ if (!discordBotClientId) {
 if (!discordBotToken) {
     throw new Error("Backend: No DISCORD_BOT_TOKEN found in environment.");
 }
+if (!robloxOpenCloudApiKey) {
+    throw new Error("Backend: No ROBLOX_OPEN_CLOUD_KEY found in environment");
+}
 
 // Initialize things
+core.roblox.setOpenCloudKey(robloxOpenCloudApiKey);
 core.database.connect(mongodbUri, undefined);
 discordBot.createClient(discordBotPrefix, discordBotClientId, discordBotToken);
 server.createInstance(serverPort);
