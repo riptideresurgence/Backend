@@ -32,7 +32,7 @@ if (!robloxOpenCloudApiKey) {
     throw new Error("Backend: No ROBLOX_OPEN_CLOUD_KEY found in environment");
 }
 
-// Initialize things
+// Initialize things 
 core.roblox.setOpenCloudKey(robloxOpenCloudApiKey);
 core.database.connect(mongodbUri, undefined);
 discordBot.createClient(discordBotPrefix, discordBotClientId, discordBotToken);
